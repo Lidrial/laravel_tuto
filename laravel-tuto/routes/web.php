@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FactureController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Route;
@@ -28,9 +29,7 @@ Route::get('test', function () {
 
 Route::get('article/{n}', [ArticleController::class, 'show'])->where('n', '[0-9]+');
 
-Route::get('facture/{n}', function($n){
-    return view('facture')->withNumero($n);
-})->where('n', '[0-9]+');
+Route::get('facture/{n}',[FactureController::class, 'show'])->where('n', '[0-9]+');
 
 Route::get('users/action', function() {
     return view('users.action');
