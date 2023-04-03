@@ -12,10 +12,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+use App\Http\Controllers\WelcomeController;
 
-Route::get('/', function () {
-    return view('vue1');
-})->name('home');
+Route::get('/',[WelcomeController::class, 'index'] )->name('home');
 
 Route::get('{n?}', function($n = 1) {
     return 'Je suis la page ' . $n . ' !';
