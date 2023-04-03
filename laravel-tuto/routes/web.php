@@ -14,9 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('vue1');
 })->name('home');
 
 Route::get('{n?}', function($n = 1) {
     return 'Je suis la page ' . $n . ' !';
 })->where('n', '[1-5]');
+
+Route::get('test', function () {
+    return response('un test', 206)->header('Content-Type', 'text/plain');
+});
+
+Route::get('article/{n}', function($n){
+    return view('article', ['numero' => $n]);
+})->where('n', '[0-9]+');
