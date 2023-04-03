@@ -1,9 +1,9 @@
 @extends('template')
 
 @section('titre')
-    Les articles
+    Les factures
 @endsection
 
 @section('contenu')
-        <p>C'est l'article n° {{ $numero }}</p>
+        <p>C'est la facture n° {{ $numero }}</p>
 @endsection

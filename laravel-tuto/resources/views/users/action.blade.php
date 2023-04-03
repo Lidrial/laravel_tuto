@@ -1,9 +1,9 @@
 @extends('template')
 
 @section('titre')
-    Les articles
+    Les actions
 @endsection
 
 @section('contenu')
-        <p>C'est l'article n° {{ $numero }}</p>
+    <p>Ceci est une action possible</p>
 @endsection

@@ -28,3 +28,15 @@ Route::get('test', function () {
 Route::get('article/{n}', function($n){
     return view('article', ['numero' => $n]);
 })->where('n', '[0-9]+');
+
+Route::get('facture/{n}', function($n){
+    return view('facture')->withNumero($n);
+})->where('n', '[0-9]+');
+
+Route::get('users/action', function() {
+    return view('users.action');
+})->name('action');
+
+Route::get('action', function(){
+    return redirect()->route('action');
+});
