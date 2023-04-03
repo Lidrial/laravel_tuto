@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-use App\Http\Controllers\WelcomeController;
+
 
 Route::get('/',[WelcomeController::class, 'index'] )->name('home');
 
@@ -24,9 +26,7 @@ Route::get('test', function () {
     return response('un test', 206)->header('Content-Type', 'text/plain');
 });
 
-Route::get('article/{n}', function($n){
-    return view('article', ['numero' => $n]);
-})->where('n', '[0-9]+');
+Route::get('article/{n}', [ArticleController::class, 'show'])->where('n', '[0-9]+');
 
 Route::get('facture/{n}', function($n){
     return view('facture')->withNumero($n);
