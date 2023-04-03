@@ -15,4 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
+
+Route::get('{n?}', function($n = 1) {
+    return 'Je suis la page ' . $n . ' !';
+})->where('n', '[1-5]');
