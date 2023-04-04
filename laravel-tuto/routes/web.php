@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FactureController;
+use App\Http\Controllers\UsersController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +19,10 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/',[WelcomeController::class, 'index'] )->name('home');
+
+Route::get('users', [UsersController::class, 'create']);
+
+Route::post('users', [UsersController::class, 'store']);
 
 Route::get('{n?}', function($n = 1) {
     return 'Je suis la page ' . $n . ' !';
