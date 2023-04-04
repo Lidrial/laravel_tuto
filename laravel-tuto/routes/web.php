@@ -49,3 +49,12 @@ Route::post('contact', [ContactController::class, 'store']);
 
 Route::get('users', [UsersController::class, 'create']);
 Route::post('users', [UsersController::class, 'store']);
+
+//test email
+Route::get('/test-contact', function(){
+    return new App\Mail\Contact([
+        'nom' => 'Durand',
+        'email' => 'durand@chezlui.com',
+        'message' => 'Je voulais vous dire que votre site est magnifique !'
+    ]);
+});
