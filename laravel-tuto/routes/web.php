@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\FactureController;
+use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\ArticleController;
@@ -58,3 +59,7 @@ Route::get('/test-contact', function(){
         'message' => 'Je voulais vous dire que votre site est magnifique !'
     ]);
 });
+
+//images
+Route::get('photo',[PhotoController::class, 'create']);
+Route::post('photo',[PhotoController::class, 'store']);
