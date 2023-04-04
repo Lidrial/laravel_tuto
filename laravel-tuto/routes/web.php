@@ -8,6 +8,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\ArticleController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FilmController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,26 +25,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/',[WelcomeController::class, 'index'] )->name('home');
 
 
-
-Route::get('{n?}', function($n = 1) {
-    return 'Je suis la page ' . $n . ' !';
-})->where('n', '[1-5]');
-
-Route::get('test', function () {
-    return response('un test', 206)->header('Content-Type', 'text/plain');
-});
-
 Route::get('article/{n}', [ArticleController::class, 'show'])->where('n', '[0-9]+');
 
 Route::get('facture/{n}',[FactureController::class, 'show'])->where('n', '[0-9]+');
-
-Route::get('users/action', function() {
-    return view('users.action');
-})->name('action');
-
-Route::get('action', function(){
-    return redirect()->route('action');
-});
 
 //Formulaires
 Route::get('contact', [ContactController::class, 'create']);
@@ -67,3 +51,6 @@ Route::get('/test-contact', function(){
 //images
 Route::get('photo',[PhotoController::class, 'create']);
 Route::post('photo',[PhotoController::class, 'store']);
+
+//films
+Route::resource('films', FilmController::class);
