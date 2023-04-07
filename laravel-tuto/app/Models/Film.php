@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Film extends Model
@@ -14,8 +15,13 @@ class Film extends Model
 
     protected $fillable = ['title', 'year', 'description'];
 
-    public function categories(): BelongsToMany
+    public function categories(): MorphToMany
     {
-        return $this->belongsToMany(Category::class);
+        return $this->morphedByMany(Category::class, 'filmable');
+    }
+
+    public function actors(): MorphToMany
+    {
+        return $this->morphedByMany(Actor::class, 'filmable');
     }
 }
